@@ -1,0 +1,150 @@
+<!--@尹耀强-->
+<!--787760669@qq.com-->
+<!--2018.5.9-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>成绩单</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+</head>
+<body>
+
+<script>
+
+$(function(){
+$("#all").click(function(){
+  $("#myInput").val("");
+  myFunction();
+});
+
+$("#wei").click(function(){
+  $("#myInput").val("×");
+   myFunction();
+});
+$("#yi").click(function(){
+  $("#myInput").val("√");
+   myFunction();
+});
+})
+
+
+</script>
+<script>
+
+    function showtable(da,all,name){
+        var data = da;
+       data= data.replace(/\[/g,"");
+       data=data.replace(/\]/g,"");
+        var strs= new Array();
+        strs = data.split(", ");
+        var  a=0;
+        var b=0;
+        var strs2= new Array();
+        for(;a<strs.length;a++){
+         console.log(strs[a]);
+            strs2[b]=strs[a];
+            b++;
+         if (b==13){
+            $(".shuju").append("<tr><th>"+strs2[0]+"</th><th>"+strs2[1]+"</th><th>"+strs2[2]+"</th><th>"+strs2[3]+"</th><th>"+strs2[4]+"</th><th>"+strs2[5]+"</th><th>"+strs2[6]+"</th><th>"+strs2[7]+"</th><th>"+strs2[8]+"</th><th>"+strs2[9]+"</th><th>"+strs2[10]+"</th><th>"+strs2[11]+"</th><th>"+strs2[12]+"</th></tr>");
+             b=0;
+         }
+        }
+		$(".all").append(all);
+		if(name=="冯双格"){
+		     alert("老婆好！");
+		}else{
+		    alert(name+"，你好！");
+		}
+
+    }
+
+
+
+	function myFunction() {
+  // 声明变量
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // 循环表格每一行，查找匹配项
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("th")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+function about(){
+alert("本软件非官方软件，仅供学习交流，请勿用于其他用途，侵权请联系：787760669@qq.com");
+}
+
+</script>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索..." style="display:none">
+<div id="myAlert" class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>你的成绩汇总：</strong><span class="all"></span>
+
+</div>
+
+
+<div class="btn-group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">筛选
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><span  id="all">所有</span></li>
+        <li class="divider"></li>
+        <li><span  id="wei">当前未通过</span></li>
+        <li class="divider"></li>
+        <li><spana id="yi">当前已通过</spana></li>
+
+    </ul>
+</div>
+
+
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th>通过否</th>
+            <th>开课学期</th>
+            <th>课程编号</th>
+            <th>课程名称</th>
+            <th>总成绩</th>
+            <th>学分</th>
+            <th>学时</th>
+            <th>课程性质</th>
+            <th>课程类别</th>
+            <th>考试性质</th>
+            <th>考试方式</th>
+            <th>标志</th>
+            <th>补重学期</th>
+        </tr>
+        </thead>
+        <tbody class="shuju" id="myTable">
+
+        </tbody>
+    </table>
+</div>
+
+
+<button type="button" class="btn btn-danger" onclick="about()">关于</button><br><br>
+推荐》
+<a href="http://itgou.top/ITblacklistq/index.html">IT公司性质分析</a><br>
+项目源码》
+<a href="https://github.com/beicky/enshizhiyuanApp">https://github.com/beicky/enshizhiyuanApp</a>
+</body>
+</html>
